@@ -188,7 +188,7 @@ public class Main {
       p.setFkOrdine(idO);
       p.setImporto(tot);
       p.setMetodo("Carta");
-      p.setStato("OK");
+      p.setStato("Completato");
       pagDAO.insert(p);
       gest.cambiaStato(ord, "Pagato");
     }
