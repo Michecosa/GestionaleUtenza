@@ -133,16 +133,3 @@ CREATE INDEX idx_ordini_utente ON Ordini(fk_utente);
 CREATE INDEX idx_ordini_stato ON Ordini(stato);
 CREATE INDEX idx_dettagli_ordine ON Dettagli_Ordine(fk_ordine);
 CREATE INDEX idx_prod_categoria ON Prodotti(fk_categoria);
-
--- SEED
-INSERT INTO Ruoli (nome_ruolo, livello) VALUES
-  ('Utente', 0), ('Admin L1', 1), ('Admin L2', 2);
-
-INSERT INTO Tipi_Spedizione (nome, corriere, costo, giorni_stima) VALUES
-  ('Standard', 'GLS', 4.90, 5),
-  ('Express 24h', 'DHL', 12.90, 1),
-  ('Economy', 'BRT', 2.90, 7),
-  ('Ritiro in negozio', NULL, 0.00, 0);
-
-INSERT INTO Categorie_Prodotto (nome) VALUES
-  ('Elettronica'), ('Abbigliamento'), ('Libri'), ('Casa e Cucina');
