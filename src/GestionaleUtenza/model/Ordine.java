@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Ordine {
     private int idOrdine;
-    private String dataCreazione;
+    private LocalDateTime dataCreazione;
     private String stato;
     private double prezzoTotale;
     private double scontoApplicato;
@@ -20,7 +20,7 @@ public class Ordine {
     public Ordine() {}
 
     public int getIdOrdine() { return idOrdine; }
-    public String getDataCreazione() { return dataCreazione; }
+    public LocalDateTime getDataCreazione() { return dataCreazione; }
     public String getStato() { return stato; }
     public double getPrezzoTotale() { return prezzoTotale; }
     public double getScontoApplicato() { return scontoApplicato; }
