@@ -1,9 +1,2 @@
-[2026-04-10 16:20:37] Ordine #0  utente:1  Pagato -> Pagato  totale: EUR1224,86
-[2026-04-10 16:26:56] Ordine #1  utente:2  Spedito -> Spedito  totale: EUR612,89
-[2026-04-10 16:28:04] Ordine #1  utente:2  In Spedizione -> In Spedizione  totale: EUR612,89
-[2026-04-10 16:44:07] Ordine #0  utente:2  Pagato -> Pagato  totale: EUR172,39
-[2026-04-10 16:48:41] Ordine #0  utente:2  Pagato -> Pagato  totale: EUR112,79
-[2026-04-10 16:50:11] Ordine #0  utente:2  Pagato -> Pagato  totale: EUR622,88
-[2026-04-10 16:50:55] Ordine #0  utente:3  Pagato -> Pagato  totale: EUR155,15
 [2026-04-10 16:52:47] Ordine #7  utente:3  In Spedizione -> In Spedizione  totale: EUR155,15
 [2026-04-10 16:53:08] Ordine #5  utente:2  Consegnato -> Consegnato  totale: EUR112,79
