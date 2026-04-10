@@ -157,14 +157,7 @@ Da MySQL Workbench aprire ed eseguire prima `script.sql`, poi `seed.sql`.
 `script.sql` crea il database `gestionale_vendite` con tutte le tabelle, constraint e indici.  
 `seed.sql` inserisce ruoli, utenti di test, prodotti, ordini e pagamenti di esempio.
 
-> **Attenzione**: il `seed.sql` non inserisce i Ruoli. 
-> Inserirli manualmente se non presenti, oppure aggiungere all'inizio del seed:
-> ```sql
-> INSERT INTO Ruoli (id_ruolo, nome_ruolo, livello) VALUES
-> (1, 'Utente', 0),
-> (2, 'Admin L1', 1),
-> (3, 'Admin L2', 2);
-> ```
+
 
 ### 2. Configurare la Connessione
 

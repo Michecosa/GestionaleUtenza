@@ -44,3 +44,9 @@ INSERT INTO Pagamenti (fk_ordine, importo, metodo, stato) VALUES
 -- 6. SPEDIZIONI
 INSERT INTO Spedizioni (fk_ordine, codice_tracking, stato, data_partenza) VALUES
 (1, 'TRK-ALPHA-9988', 'In Preparazione', NULL);
+
+-- 7. RUOLI
+INSERT INTO Ruoli (id_ruolo, nome_ruolo, livello) VALUES
+	(1, 'Utente', 0),
+	(2, 'Admin L1', 1),
+	(3, 'Admin L2', 2);
