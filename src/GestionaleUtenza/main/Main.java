@@ -110,9 +110,17 @@ public class Main {
         break;
 
       switch (s) {
-        case 1 -> pDAO.findAllAttivi().forEach(System.out::println);
+        case 1 -> {
+          System.out.println("--- CATALOGO PRODOTTI ---");
+          for (Prodotto p : pDAO.findAllAttivi())
+            System.out.println("[" + p.getIdProdotto() + "] " + p.getNome() + " - EUR " + p.getPrezzoBase() + " (stock: " + p.getStock() + ")");
+        }
         case 2 -> gestisciCreazioneOrdine(sc, u, pDAO, oDAO, pagDAO, gest);
-        case 3 -> oDAO.findByUtente(u.getIdUtente()).forEach(System.out::println);
+        case 3 -> {
+          System.out.println("--- I MIEI ORDINI ---");
+          for (Ordine o : oDAO.findByUtente(u.getIdUtente()))
+            System.out.println("[#" + o.getIdOrdine() + "] " + o.getStato() + " - EUR " + o.getPrezzoTotale() + " (" + o.getDataCreazione() + ")");
+        }
       }
     }
   }
@@ -123,7 +131,9 @@ public class Main {
 
     // Selezione Prodotti
     while (true) {
-      pDAO.findAllAttivi().forEach(System.out::println);
+      System.out.println("--- CATALOGO PRODOTTI ---");
+      for (Prodotto p : pDAO.findAllAttivi())
+        System.out.println("[" + p.getIdProdotto() + "] " + p.getNome() + " - EUR " + p.getPrezzoBase() + " (stock: " + p.getStock() + ")");
       System.out.print("ID Prodotto (0 per terminare): ");
       int id = Integer.parseInt(sc.nextLine());
       if (id == 0)
@@ -150,7 +160,9 @@ public class Main {
 
     // Selezione Spedizione
     List<TipoSpedizione> tipi = oDAO.findTipiSpedizione();
-    tipi.forEach(System.out::println);
+    System.out.println("--- TIPI SPEDIZIONE ---");
+    for (TipoSpedizione t : tipi)
+      System.out.println("[" + t.getIdTipoSped() + "] " + t.getNome() + " - EUR " + t.getCosto() + " (" + t.getGiorniStima() + " gg)");
     System.out.print("Seleziona ID Spedizione: ");
     int idT = Integer.parseInt(sc.nextLine());
     TipoSpedizione ts = tipi.stream().filter(t -> t.getIdTipoSped() == idT).findFirst().orElse(null);
@@ -182,7 +194,7 @@ public class Main {
     }
 
     // Pagamento
-    System.out.println("Ordine #" + idO + " creato con successo. Totale: " + tot + " EUR. Pagare ora? (s/n)");
+    System.out.printf("Ordine #%d creato con successo. Totale: %.2f EUR. Pagare ora? (s/n)%n", idO, tot);
     if (sc.nextLine().equalsIgnoreCase("s")) {
       Pagamento p = new Pagamento();
       p.setFkOrdine(idO);
@@ -207,7 +219,9 @@ public class Main {
         break;
 
       if (s == 1) {
-        pDAO.findAll().forEach(System.out::println);
+        System.out.println("--- TUTTI I PRODOTTI ---");
+        for (Prodotto p : pDAO.findAll())
+          System.out.println("[" + p.getIdProdotto() + "] " + p.getNome() + " - EUR " + p.getPrezzoBase() + " | stock: " + p.getStock() + " | attivo: " + p.isAttivo());
         System.out.print("1. Aggiungi Prodotto, 0. Torna indietro: ");
         if (sc.nextLine().equals("1")) {
           Prodotto p = new Prodotto();
@@ -221,7 +235,9 @@ public class Main {
           pDAO.insert(p);
         }
       } else if (s == 2) {
-        oDAO.findAll().forEach(System.out::println);
+        System.out.println("--- TUTTI GLI ORDINI ---");
+        for (Ordine o : oDAO.findAll())
+          System.out.println("[#" + o.getIdOrdine() + "] utente:" + o.getFkUtente() + " | " + o.getStato() + " | EUR " + o.getPrezzoTotale() + " | " + o.getDataCreazione());
         System.out.print("ID ordine per cambio stato: ");
         int id = Integer.parseInt(sc.nextLine());
         System.out.print("Inserisci Nuovo stato (In Spedizione, Consegnato): ");
