@@ -6,9 +6,9 @@ public class DatabaseConnection {
     private static DatabaseConnection instance;
     private Connection connection;
 
-    private String url = "jdbc:mysql://localhost:3306/gestionale_db";
+    private String url = "jdbc:mysql://localhost:3306/gestionale_vendite";
     private String user = "root";
-    private String pass = "password";
+    private String pass = "root";
 
     // Costruttore privato
     private DatabaseConnection() {
