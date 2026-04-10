@@ -7,6 +7,7 @@ import GestionaleUtenza.model.Utente;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class UtenteDAO {
 
@@ -14,7 +15,7 @@ public class UtenteDAO {
         return DatabaseConnection.getInstance().getConnection();
     }
 
-    public Utente findByEmail(String email) {
+    public Optional<Utente> findByEmail(String email) {
         String sql = "SELECT u.*, r.nome_ruolo, r.livello " +
                      "FROM Utenti u JOIN Ruoli r ON u.fk_ruolo = r.id_ruolo " +
                      "WHERE u.email = ?";
@@ -22,12 +23,12 @@ public class UtenteDAO {
             PreparedStatement ps = getConn().prepareStatement(sql);
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) return mapRow(rs);
+            if (rs.next()) return Optional.of(mapRow(rs));
         } catch (SQLException e) { e.printStackTrace(); }
-        return null;
+        return Optional.empty();
     }
 
-    public Utente findById(int id) {
+    public Optional<Utente> findById(int id) {
         String sql = "SELECT u.*, r.nome_ruolo, r.livello " +
                      "FROM Utenti u JOIN Ruoli r ON u.fk_ruolo = r.id_ruolo " +
                      "WHERE u.id_utente = ?";
@@ -35,9 +36,9 @@ public class UtenteDAO {
             PreparedStatement ps = getConn().prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) return mapRow(rs);
+            if (rs.next()) return Optional.of(mapRow(rs));
         } catch (SQLException e) { e.printStackTrace(); }
-        return null;
+        return Optional.empty();
     }
 
     public List<Utente> findAll() {
